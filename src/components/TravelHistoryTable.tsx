@@ -1,15 +1,17 @@
 import React, { useMemo } from "react";
 import styles from "./TravelHistoryTable.module.css";
-import { parseTravelHistory, Crossings } from "../utilities/parseTravelHistory";
+import { parseTravelHistory } from "../utilities/parseTravelHistory";
+import { pairTrips, Trip } from "../utilities/pairTrips";
 
 interface Props {
   rawData: string;
 }
 
 export const TravelHistoryTable: React.FC<Props> = ({ rawData }) => {
-  const parsed: Crossings = useMemo(() => {
+  const trips: Trip[] = useMemo(() => {
     try {
-      return parseTravelHistory(rawData);
+      const crossings = parseTravelHistory(rawData);
+      return pairTrips(crossings);
     } catch (err) {
       console.error("Parsing error:", err);
       return [];
@@ -20,23 +22,27 @@ export const TravelHistoryTable: React.FC<Props> = ({ rawData }) => {
 
   return (
     <section>
-      <h3>Parsed Travel History</h3>
+      <h3>Trips to the U.S.</h3>
       <table className={styles.table}>
         <thead>
           <tr>
             <th>#</th>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Location</th>
+            <th>Entry Date</th>
+            <th>Entry Location</th>
+            <th>Departure Date</th>
+            <th>Departure Location</th>
+            <th>Days in U.S.</th>
           </tr>
         </thead>
         <tbody>
-          {parsed.map((entry, index) => (
+          {trips.map((trip, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
-              <td>{entry.date.toString()}</td>
-              <td>{entry.__typename}</td>
-              <td>{entry.location}</td>
+              <td>{trip.entryDate.toString()}</td>
+              <td>{trip.entryLocation}</td>
+              <td>{trip.departureDate.toString()}</td>
+              <td>{trip.departureLocation}</td>
+              <td>{trip.duration}</td>
             </tr>
           ))}
         </tbody>
