@@ -1,0 +1,54 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    /* min-height: 100vh; */
+  }
+  
+  .header {
+    padding: 1rem;
+    background: #f8f8f8;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr auto; /* Left and Right columns */
+    padding: 1rem 2rem;
+    border-top: 1px solid #eee;
+    background: #fafafa;
+  }
+  
+  .footer .buttonWrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button {
+    padding: 0.5rem 1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .backButtonWrapper {
+    justify-self: start; /* Align the Back button to the left */
+  }
+  
+  .nextButtonWrapper {
+    justify-self: end; /* Align the Next button to the right */
+  }
+  
+  
