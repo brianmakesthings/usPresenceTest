@@ -7,6 +7,7 @@ export type Trip = {
   entryLocation: string;
   departureLocation: string;
   duration: number; // in days
+  warnings: string[];
 };
 
 export function pairTrips(crossings: Crossings): Trip[] {
@@ -25,18 +26,21 @@ export function pairTrips(crossings: Crossings): Trip[] {
       const entry = stack.pop();
       if (entry) {
         const duration = crossing.date.since(entry.date).days || 1;
+        const warnings: string[] = [];
+
         trips.push({
           entryDate: entry.date,
           departureDate: crossing.date,
           entryLocation: entry.location,
           departureLocation: crossing.location,
           duration,
+          warnings,
         });
       }
     }
   }
 
-  // Handle leftover entries
+  // Handle unmatched entries (still in US)
   stack.forEach((entry) => {
     const isLastCrossing = entry === sorted[sorted.length - 1];
     const departureDate = isLastCrossing
@@ -48,6 +52,15 @@ export function pairTrips(crossings: Crossings): Trip[] {
       : `${entry.location} (no departure)`;
 
     const duration = departureDate.since(entry.date).days || 1;
+    const warnings: string[] = [];
+
+    if (isLastCrossing) {
+      warnings.push("No recorded departure – assuming still in U.S.");
+    }
+
+    if (duration <= 1) {
+      warnings.push("Assuming trip lasted only 1 day");
+    }
 
     trips.push({
       entryDate: entry.date,
@@ -55,10 +68,10 @@ export function pairTrips(crossings: Crossings): Trip[] {
       entryLocation: entry.location,
       departureLocation,
       duration,
+      warnings,
     });
   });
 
-  // Sort trips by entry date just in case
   return trips.sort((a, b) =>
     Temporal.PlainDate.compare(a.entryDate, b.entryDate)
   );
