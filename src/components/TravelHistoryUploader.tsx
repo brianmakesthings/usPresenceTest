@@ -15,11 +15,13 @@ export const TravelHistoryUploader: React.FC<Props> = ({ onUpload }) => {
 
   return (
     <div className={styles.uploader}>
-      <h3>Paste Travel History</h3>
+      <p>Paste your travel history here</p>
       <textarea
         value={text}
         onChange={handleChange}
-        placeholder="Paste your travel history here..."
+        placeholder={
+          "Ex:\nRow\tDATE\tTYPE\tLOCATION\n1\tYYYY-MM-DD\tArrival\tPHY\n..."
+        }
         rows={10}
       />
     </div>

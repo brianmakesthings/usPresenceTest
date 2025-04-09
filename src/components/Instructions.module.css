@@ -1,0 +1,11 @@
+.header {
+    margin: 0
+}
+
+.header h2 {
+    font-size: 12px;
+}
+
+ol {
+    margin: 4px 0 8px 0;
+}

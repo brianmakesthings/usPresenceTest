@@ -1,12 +1,17 @@
 .uploader {
-    margin: 1rem 0;
+    margin: 2rem 0;
   }
   
-  textarea {
+textarea {
     width: 100%;
     font-family: monospace;
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
+    /* very light drop shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
   
+p {
+    margin-bottom: 2px;
+}

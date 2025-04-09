@@ -1,26 +1,27 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-    /* min-height: 100vh; */
   }
   
   .header {
-    padding: 1rem;
-    background: #f8f8f8;
-    border-bottom: 1px solid #ccc;
+    /* faded grey text to not stand out*/
+    color: #888;
+  }
+
+  .header h3 {
+    /* reduce heading weight */
+    font-weight: 200; 
+    margin: 0px 0px 4px 0px;
   }
   
   .content {
     flex: 1;
-    padding: 2rem;
   }
   
   .footer {
     display: grid;
-    grid-template-columns: 1fr auto; /* Left and Right columns */
+    grid-template-columns: 1fr auto; 
     padding: 1rem 2rem;
-    border-top: 1px solid #eee;
-    background: #fafafa;
   }
   
   .footer .buttonWrapper {
@@ -36,6 +37,7 @@
     font-weight: bold;
     border-radius: 4px;
     cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .button:disabled {

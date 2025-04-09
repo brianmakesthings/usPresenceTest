@@ -24,9 +24,9 @@ export const StepLayout: React.FC<Props> = ({
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
-        <h2>
+        <h3>
           Step {step} of {total}
-        </h2>
+        </h3>
       </header>
 
       <main className={styles.content}>{children}</main>
