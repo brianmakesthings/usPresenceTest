@@ -10,6 +10,7 @@ import { SubstantialPresenceChecker } from "./components/SubstantialPresenceChec
 import { StepLayout } from "./components/StepLayout";
 import { Instructions } from "./components/Instructions";
 import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 
 const App: React.FC = () => {
   const [rawHistory, setRawHistory] = useState<string>("");
@@ -26,31 +27,34 @@ const App: React.FC = () => {
   return (
     <div className={styles.app}>
       <Header />
-      <Routes>
-        <Route path="/" element={<Navigate to="/upload" />} />
+      <main className={styles.mainContent}>
+        <Routes>
+          <Route path="/" element={<Navigate to="/upload" />} />
 
-        <Route
-          path="/upload"
-          element={
-            <StepLayout canNext={!!rawHistory} next="/results">
-              <Instructions />
-              <TravelHistoryUploader
-                value={rawHistory}
-                onUpload={setRawHistory}
-              />
-            </StepLayout>
-          }
-        />
+          <Route
+            path="/upload"
+            element={
+              <StepLayout canNext={!!rawHistory} next="/results">
+                <Instructions />
+                <TravelHistoryUploader
+                  value={rawHistory}
+                  onUpload={setRawHistory}
+                />
+              </StepLayout>
+            }
+          />
 
-        <Route
-          path="/results"
-          element={
-            <StepLayout back="/upload">
-              <SubstantialPresenceChecker trips={trips} />
-            </StepLayout>
-          }
-        />
-      </Routes>
+          <Route
+            path="/results"
+            element={
+              <StepLayout back="/upload">
+                <SubstantialPresenceChecker trips={trips} />
+              </StepLayout>
+            }
+          />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 };

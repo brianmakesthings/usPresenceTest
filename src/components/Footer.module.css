@@ -1,0 +1,45 @@
+.footer {
+    margin-top: 3rem;
+    /* Add space above the footer */
+    padding: 1.5rem 1rem;
+    /* Padding top/bottom and left/right */
+    border-top: 1px solid #ccc;
+    /* Separator line */
+    font-size: 0.8rem;
+    /* Smaller text for footer */
+    color: #555;
+    line-height: 1.4;
+}
+
+.disclaimer {
+    /* Limit width for readability */
+    max-width: 800px;
+    /* Center disclaimer block and add space below */
+    margin: 0 auto 1rem auto;
+    /* Justify text for a cleaner look */
+    text-align: justify;
+    /* Even smaller for disclaimer */
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.disclaimer strong {
+    color: #444;
+}
+
+.links {
+    text-align: center;
+    /* Center the links/copyright */
+}
+
+.linkItem {
+    margin: 0 0.5rem;
+    /* Space around links */
+    color: #007bff;
+    /* Standard link blue */
+    text-decoration: none;
+}
+
+.linkItem:hover {
+    text-decoration: underline;
+}

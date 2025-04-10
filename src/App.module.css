@@ -1,16 +1,25 @@
 .app {
-    font-family: 'Satoshi';
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 2rem;
-    /* background-color: #f9f9f9; */
-  }
-  
-  .nav {
-    display: flex;
-    gap: 1rem;
-    /* background: #f0f0f0; */
-    padding: 1rem;
-    border-bottom: 1px solid #ccc;
-  }
-  
+  font-family: 'Satoshi';
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 2rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainContent {
+  flex-grow: 1;
+  /* Allows the main content area to expand and push the footer down */
+  /* Add padding or other styles for your main content area if needed */
+  padding: 1rem;
+  /* Example padding */
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  /* background: #f0f0f0; */
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
