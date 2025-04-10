@@ -3,8 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
 
-const GITHUB_REPO_URL =
-  "https://github.com/brianmakesthings/usSubtantialPresenceTest";
+const GITHUB_REPO_URL = "https://github.com/brianmakesthings/usPresenceTest";
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear(); // Get current year dynamically
