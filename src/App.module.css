@@ -12,8 +12,6 @@
   flex-grow: 1;
   /* Allows the main content area to expand and push the footer down */
   /* Add padding or other styles for your main content area if needed */
-  padding: 1rem;
-  /* Example padding */
 }
 
 .nav {
