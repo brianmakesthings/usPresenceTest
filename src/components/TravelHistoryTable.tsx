@@ -26,7 +26,6 @@ export const TravelHistoryTable: React.FC<Props> = ({ rawData }) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>#</th>
             <th>Entry Date</th>
             <th>Entry Location</th>
             <th>Departure Date</th>
@@ -37,7 +36,6 @@ export const TravelHistoryTable: React.FC<Props> = ({ rawData }) => {
         <tbody>
           {trips.map((trip, index) => (
             <tr key={index}>
-              <td>{index + 1}</td>
               <td>{trip.entryDate.toString()}</td>
               <td>{trip.entryLocation}</td>
               <td>{trip.departureDate.toString()}</td>
