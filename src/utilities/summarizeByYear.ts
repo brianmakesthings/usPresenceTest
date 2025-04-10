@@ -12,6 +12,7 @@ export function summarizeByYear(trips: Trip[]): YearStats {
     let current = trip.entryDate;
     const end = trip.departureDate;
 
+    // count day by day in case dates cross over year
     while (Temporal.PlainDate.compare(current, end) <= 0) {
       const year = current.year.toString();
       stats[year] = (stats[year] || 0) + 1;

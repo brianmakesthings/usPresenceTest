@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import styles from "./StepLayout.module.css";
 
 interface Props {
-  step: number;
-  total: number;
   back?: string;
   next?: string;
   canNext?: boolean;
@@ -12,8 +10,6 @@ interface Props {
 }
 
 export const StepLayout: React.FC<Props> = ({
-  step,
-  total,
   back,
   next,
   canNext = true,
@@ -23,15 +19,8 @@ export const StepLayout: React.FC<Props> = ({
 
   return (
     <div className={styles.wrapper}>
-      <header className={styles.header}>
-        <h3>
-          Step {step} of {total}
-        </h3>
-      </header>
-
       <main className={styles.content}>{children}</main>
 
-      {/* <footer className={styles.footer}> */}
       <div className={styles.footer}>
         {back && (
           <div className={styles.backButtonWrapper}>
@@ -52,7 +41,6 @@ export const StepLayout: React.FC<Props> = ({
             </button>
           </div>
         )}
-        {/* </footer> */}
       </div>
     </div>
   );

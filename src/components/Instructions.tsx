@@ -10,9 +10,7 @@ export const Instructions: React.FC = () => (
           CBP travel history site
         </a>
       </li>
-      <li>Paste your travel history below</li>
-      <li>Edit or verify entries</li>
-      <li>See your stats and check substantial presence</li>
+      <li>Enter your details and copy your travel history</li>
     </ol>
   </section>
 );

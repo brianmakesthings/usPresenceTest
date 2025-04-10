@@ -6,8 +6,6 @@ import { parseTravelHistory } from "./utilities/parseTravelHistory";
 import { pairTrips, Trip } from "./utilities/pairTrips";
 
 import { TravelHistoryUploader } from "./components/TravelHistoryUploader";
-import { TravelHistoryTable } from "./components/TravelHistoryTable";
-import { SummaryStats } from "./components/SummaryStats";
 import { SubstantialPresenceChecker } from "./components/SubstantialPresenceChecker";
 import { StepLayout } from "./components/StepLayout";
 import { Instructions } from "./components/Instructions";
@@ -34,29 +32,12 @@ const App: React.FC = () => {
         <Route
           path="/upload"
           element={
-            <StepLayout
-              step={1}
-              total={3}
-              canNext={!!rawHistory}
-              next="/review"
-            >
+            <StepLayout canNext={!!rawHistory} next="/results">
               <Instructions />
-              <TravelHistoryUploader onUpload={setRawHistory} />
-            </StepLayout>
-          }
-        />
-
-        <Route
-          path="/review"
-          element={
-            <StepLayout
-              step={2}
-              total={3}
-              canNext={!!trips.length}
-              back="/upload"
-              next="/results"
-            >
-              <TravelHistoryTable rawData={rawHistory} />
+              <TravelHistoryUploader
+                value={rawHistory}
+                onUpload={setRawHistory}
+              />
             </StepLayout>
           }
         />
@@ -64,9 +45,8 @@ const App: React.FC = () => {
         <Route
           path="/results"
           element={
-            <StepLayout step={3} total={3} back="/review">
+            <StepLayout back="/upload">
               <SubstantialPresenceChecker trips={trips} />
-              <SummaryStats trips={trips} />
             </StepLayout>
           }
         />

@@ -7,7 +7,12 @@ export type SubstantialPresenceResult = {
   priorYear2Days: number;
   totalWeightedDays: number;
   meetsSPT: boolean;
+  failureReasons: FailureReason[];
 };
+
+export type FailureReason =
+  | "insufficient_current_year_days"
+  | "insufficient_weighted_days";
 
 export function checkSubstantialPresence(
   stats: YearStats,
@@ -24,7 +29,16 @@ export function checkSubstantialPresence(
   const totalWeightedDays =
     currentYearDays + priorYear1Days / 3 + priorYear2Days / 6;
 
-  const meetsSPT = currentYearDays >= 31 && totalWeightedDays >= 183;
+  const sufficientCurrentYearDays = currentYearDays >= 31;
+  const sufficientWeightedDays = totalWeightedDays >= 183;
+
+  const meetsSPT = sufficientCurrentYearDays && sufficientWeightedDays;
+
+  const failureReasons: FailureReason[] = [];
+  if (!sufficientCurrentYearDays)
+    failureReasons.push("insufficient_current_year_days");
+  if (!sufficientWeightedDays)
+    failureReasons.push("insufficient_weighted_days");
 
   return {
     year,
@@ -33,5 +47,6 @@ export function checkSubstantialPresence(
     priorYear2Days,
     totalWeightedDays,
     meetsSPT,
+    failureReasons,
   };
 }
