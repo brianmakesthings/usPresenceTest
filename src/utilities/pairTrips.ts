@@ -12,9 +12,13 @@ export type Trip = {
 
 export function pairTrips(crossings: Crossings): Trip[] {
   const trips: Trip[] = [];
-  const sorted = crossings.sort((a, b) =>
-    Temporal.PlainDate.compare(a.date, b.date)
-  );
+  const sorted = crossings.sort((a, b) => {
+    if (Temporal.PlainDate.compare(a.date, b.date) === 0) {
+      return a.__typename === "Entry" ? -1 : 1;
+    } else {
+      return Temporal.PlainDate.compare(a.date, b.date);
+    }
+  });
   const stack: Entry[] = [];
 
   for (let i = 0; i < sorted.length; i++) {
@@ -25,7 +29,7 @@ export function pairTrips(crossings: Crossings): Trip[] {
     } else {
       const entry = stack.pop();
       if (entry) {
-        const duration = crossing.date.since(entry.date).days || 1;
+        const duration = crossing.date.since(entry.date).days + 1;
         const warnings: string[] = [];
 
         trips.push({

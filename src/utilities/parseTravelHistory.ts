@@ -1,10 +1,15 @@
 import { Temporal } from "@js-temporal/polyfill";
 
 export function parseTravelHistory(travelHistory: string): Crossings {
-  return travelHistory
-    .trim()
-    .split("\n")
-    .slice(1)
+  //   return
+  const split = travelHistory.trim().split("\n");
+
+  // Remove header
+  if (split[0].includes("Row")) {
+    split.shift();
+  }
+
+  return split
     .map((line) => line.split("\t").map((cell) => cell.trim()))
     .map((row) => row.slice(1))
     .map((row) => {
