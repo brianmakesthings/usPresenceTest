@@ -1,0 +1,13 @@
+.wrapper {
+    padding: 16px;
+    max-width: 800px;
+    margin: auto;
+
+    p {
+        padding: 0 0 8px 0;
+    }
+
+    h2 {
+        margin: 8px 0 4px 0;
+    }
+}

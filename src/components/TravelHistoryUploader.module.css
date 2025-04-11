@@ -1,7 +1,7 @@
 .uploader {
     margin: 32px 0;
-  }
-  
+}
+
 textarea {
     width: 100%;
     font-family: monospace;
@@ -13,7 +13,32 @@ textarea {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     tab-size: 128px;
 }
-  
+
 p {
     margin: 2px;
+}
+
+.disclaimerWrapper {
+    display: flex;
+    /* justify-content: flex-end; */
+}
+
+.disclaimerButton {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    /* max-width: 256px; */
+
+    input {
+        margin: 0 8px 0 0;
+        cursor: pointer;
+    }
+
+    p {
+        margin: 0;
+        text-align: left;
+    }
 }

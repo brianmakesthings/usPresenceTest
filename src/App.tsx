@@ -15,6 +15,7 @@ import { About } from "./components/About";
 
 const App: React.FC = () => {
   const [rawHistory, setRawHistory] = useState<string>("");
+  const [disclaimerAcknowledged, setDisclaimerAcknowledged] = useState(false);
 
   const trips: Trip[] = useMemo(() => {
     try {
@@ -35,11 +36,16 @@ const App: React.FC = () => {
           <Route
             path="/upload"
             element={
-              <StepLayout canNext={!!rawHistory} next="/results">
+              <StepLayout
+                canNext={!!rawHistory && disclaimerAcknowledged}
+                next="/results"
+              >
                 <Instructions />
                 <TravelHistoryUploader
                   value={rawHistory}
                   onUpload={setRawHistory}
+                  disclaimerAcknowledged={disclaimerAcknowledged}
+                  setDisclaimerAcknowledged={setDisclaimerAcknowledged}
                 />
               </StepLayout>
             }

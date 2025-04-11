@@ -16,12 +16,12 @@ export const Footer: React.FC = () => {
           purposes only based on publicly available information regarding the
           Substantial Presence Test. It does not constitute, and should not be
           relied upon as, tax or legal advice. Tax laws and regulations are
-          complex and subject to change. We strongly recommend consulting with a
+          complex and subject to change. I strongly recommend consulting with a
           qualified tax professional or immigration attorney for advice tailored
           to your specific situation before making any decisions based on the
-          results of this tool. Use of this tool is at your own risk, and the
-          creators assume no liability for any inaccuracies or errors, or for
-          any decisions made based on its use.
+          results of this tool. Use of this tool is at your own risk, and I
+          assume no liability for any inaccuracies or errors, or for any
+          decisions made based on its use.
         </p>
       </div>
       <div className={styles.links}>
