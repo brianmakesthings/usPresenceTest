@@ -22,7 +22,10 @@ export const TravelHistoryUploader: React.FC<Props> = ({
   return (
     <>
       <div className={styles.uploader}>
-        <p>Paste your travel history here</p>
+        <p>
+          Paste your travel history here (data is processed locally and never
+          sent to any server):
+        </p>
         <textarea
           value={value}
           onChange={handleChange}
