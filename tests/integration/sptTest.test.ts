@@ -167,4 +167,28 @@ Row	DATE 	TYPE 	LOCATION
       year: 2024,
     });
   });
+
+  it("handles multi year long trips to the US", () => {
+    const rawInput = `
+Row	DATE 	TYPE 	LOCATION
+1 	2025-02-17 	Departure 	PHY
+2 	2023-02-15 	Arrival 	813
+`;
+
+    const parsedHistory = parseTravelHistory(rawInput);
+
+    const trips = pairTrips(parsedHistory);
+    const yearStats = summarizeByYear(trips);
+    const spt = checkSubstantialPresence(yearStats, 2024);
+
+    expect(spt).toEqual({
+      meetsSPT: true,
+      currentYearDays: 366,
+      priorYear1Days: 0,
+      priorYear2Days: 0,
+      totalWeightedDays: 0,
+      failureReasons: [],
+      year: 2024,
+    });
+  });
 });
